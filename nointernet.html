@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>No Internet</title>
+</head>
+<body>
+  <div id="status"></div>
+
+  <script>
+    function checkConnection() {
+      const statusDiv = document.getElementById("status");
+      if (navigator.onLine) {
+        statusDiv.innerHTML = `
+          <div style="color: green; font-size: 24px; text-align: center; padding: 20px;">
+            You are connected to the internet.
+          </div>`;
+      } else {
+        statusDiv.innerHTML = `
+          <div style="color: red; font-size: 24px; text-align: center; padding: 20px; background-color: #ffe6e6; border: 2px solid red; border-radius: 10px;">
+            Your internet is trash/no internet. Check your connection.
+          </div>`;
+      }
+    }
+
+    window.addEventListener('load', checkConnection);
+    window.addEventListener('online', checkConnection);
+    window.addEventListener('offline', checkConnection);
+  </script>
+</body>
+</html>
